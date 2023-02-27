@@ -1,0 +1,10 @@
+{
+  "hello": "Speak('Hello sir. How are you')",
+  "email": " webbrowser.open('https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox');Speak('Opening emails')",
+  "facebook": " webbrowser.open('https://www.facebook.com/');Speak('Opening facebook')",
+  "search": "Search(text)",
+  "test": "print('This is a test')",
+  "open control": "openControl()",
+  "stop control": "stopControl()",
+  "bye": " Speak('Goodbye sir');sys.exit(0)"
+}
