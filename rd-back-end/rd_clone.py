@@ -3,6 +3,10 @@ import json
 import pickle
 import numpy as np
 import nltk
+from flask import *
+from flask_cors import CORS
+# nltk.download()
+
 from nltk.stem import WordNetLemmatizer
 import tensorflow as tf
 
@@ -52,9 +56,36 @@ def get_response(intents_list,intents_json):
 
 print('RD is running')
 
-while True:
-    message=input("")
-    message=message.lower()
-    ints=predict_class(message)
-    res=get_response(ints,intents)
-    print(res)
+# while True:
+#     message=input("")
+#     message=message.lower()
+#     ints=predict_class(message)
+#     res=get_response(ints,intents)
+#     print(res)
+
+
+app=Flask(__name__)
+CORS(app)
+
+@app.route('/',methods=['POST'])
+def home_page():
+    # user_query=str(request.args.get('user')) this is a qeuery
+    message_data=request.json
+    if message_data is not None:
+        print(message_data["message"])
+        message=message_data["message"]
+        message=message.lower()
+        ints=predict_class(message)
+        res=get_response(ints,intents)
+        # res.headers.add('Access-Control-Allow-Origin', '*')
+        return res
+    else:
+        return None
+
+@app.route('/',methods=['GET'])
+def page():
+    # user_query=str(request.args.get('user')) this is a qeuery
+    return "Hello"
+
+if __name__=='__main__':
+    app.run(port=5000)
