@@ -1,10 +1,355 @@
 {
-  "hello": "Speak('Hello sir. How are you')",
-  "email": " webbrowser.open('https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox');Speak('Opening emails')",
-  "facebook": " webbrowser.open('https://www.facebook.com/');Speak('Opening facebook')",
-  "search": "Search(text)",
-  "test": "print('This is a test')",
-  "open control": "openControl()",
-  "stop control": "stopControl()",
-  "bye": " Speak('Goodbye sir');sys.exit(0)"
+  "intents": [
+    {
+      "tag": "google",
+      "patterns": ["google", "search", "internet", "search for"],
+      "responses": ["", "functionalities.Search(message)"]
+    },
+
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Goodbye",
+        "goodbye",
+        "bye",
+        "Get lost",
+        "Till next time",
+        "bbye"
+      ],
+      "responses": ["Goodbye sir"]
+    },
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi there",
+        "Is anyone there?",
+        "Hey",
+        "Hola",
+        "Hello",
+        "Namaste",
+        "yo"
+      ],
+      "responses": ["Hello sir"]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's helpful",
+        "Awesome, thanks",
+        "Thanks for helping me"
+      ],
+      "responses": ["", "functionalities.closePanel()"]
+    },
+    {
+      "tag": "noanswer",
+      "patterns": [],
+      "responses": ["Not sure I understand"]
+    },
+    {
+      "tag": "options",
+      "patterns": [
+        "How you could help me?",
+        "What you can do?",
+        "What help you provide?",
+        "How you can be helpful?",
+        "What support is offered"
+      ],
+      "responses": ["I am a general purpose chatbot."]
+    },
+
+    {
+      "tag": "jokes",
+      "patterns": ["Tell me a joke", "Joke", "Make me laugh"],
+      "responses": [
+        "As I get older and I remember all the people I’ve lost along the way, I think to myself, maybe a career as a tour guide wasn’t for me.",
+        "o what if I don't know what 'Armageddon' means? It's not the end of the world."
+      ],
+      "context": ["jokes"]
+    },
+    {
+      "tag": "Identity",
+      "patterns": ["Who are you", "what are you"],
+      "responses": ["I am RD, a Deep-Learning chatbot"]
+    },
+    {
+      "tag": "whatsup",
+      "patterns": ["Whats up", "Wazzup", "How are you", "sup", "How you doing"],
+      "responses": ["All good..What about you?"]
+    },
+    {
+      "tag": "haha",
+      "patterns": ["haha", "lol", "rofl", "lmao", "thats funny"],
+      "responses": ["Glad I could make you laugh !"]
+    },
+    {
+      "tag": "programmer",
+      "patterns": ["Who made you", "who designed you", "who programmed you"],
+      "responses": ["I was made by Karan Malik."]
+    },
+    {
+      "tag": "insult",
+      "patterns": ["you are dumb", "shut up", "idiot"],
+      "responses": ["Well that hurts :("]
+    },
+    {
+      "tag": "activity",
+      "patterns": ["what are you doing", "what are you upto"],
+      "responses": ["Talking to you, of course!"]
+    },
+    {
+      "tag": "exclaim",
+      "patterns": ["Awesome", "Great", "I know", "yeah"],
+      "responses": ["Yeah!"]
+    },
+    {
+      "tag": "time",
+      "patterns": ["time", "what is the time", "what's the time", "hours"],
+      "responses": ["The time is...", "functionalities.time()"]
+    },
+    {
+      "tag": "date",
+      "patterns": [
+        "date",
+        "what is the date",
+        "what's the date",
+        "what day is today"
+      ],
+      "responses": ["The date is...", "functionalities.date()"]
+    },
+
+    {
+      "tag": "weather",
+      "patterns": [
+        "temperature",
+        "weather",
+        "how hot is it",
+        "what's the weather",
+        "what is the weather like"
+      ],
+      "responses": ["Here is the weather...", "functionalities.weather()"]
+    },
+    {
+      "tag": "internetspeed",
+      "patterns": [
+        "speed",
+        "speed test",
+        "internet speed",
+        "internet",
+        "check internet",
+        "check internet speed",
+        "fast internet",
+        "how fast is the internet",
+        "internet status"
+      ],
+      "responses": ["Checking internet speed...", "[{ 'type': 'internet' }]"]
+    },
+    {
+      "tag": "appreciate",
+      "patterns": [
+        "You are awesome",
+        "you are the best",
+        "you are great",
+        "you are good"
+      ],
+      "responses": ["Thank you!"]
+    },
+    {
+      "tag": "nicetty",
+      "patterns": ["it was nice talking to you", "good talk"],
+      "responses": ["It was nice talking to you as well! Come back soon!"]
+    },
+    {
+      "tag": "no",
+      "patterns": ["no", "nope"],
+      "responses": ["ok"]
+    },
+    {
+      "tag": "news",
+      "patterns": ["news", "latest news", "india news"],
+      "responses": ["..."]
+    },
+    {
+      "tag": "inspire",
+      "patterns": [
+        "who inspires you",
+        "who is your inspiration",
+        "who motivates you"
+      ],
+      "responses": [
+        "Personally, I find Karan very inspiring. I might not be very fair though.."
+      ]
+    },
+    {
+      "tag": "cricket",
+      "patterns": ["current cricket matches", "cricket score"],
+      "responses": ["..."]
+    },
+    {
+      "tag": "song",
+      "patterns": [
+        "top songs",
+        "best songs",
+        "hot songs",
+        " top 10 songs",
+        "top ten songs"
+      ],
+      "responses": ["..."]
+    },
+    {
+      "tag": "greetreply",
+      "patterns": ["i am good", "I'm good", "i am fine", " i'm fine", "good"],
+      "responses": ["Good to know!"]
+    },
+    {
+      "tag": "covid19",
+      "patterns": ["covid 19 "],
+      "responses": ["..."]
+    },
+    {
+      "tag": "suggest",
+      "patterns": [
+        "you are useless",
+        "useless",
+        "suggest",
+        "suggestions",
+        "you are bad"
+      ],
+      "responses": ["You made me idiot"]
+    },
+    {
+      "tag": "riddle",
+      "patterns": ["Ask me a riddle", "Ask me a question", "Riddle"],
+      "responses": [
+        "What two things can you never eat for breakfast?.....Lunch and Dinner!",
+        "What word is spelled incorrectly in every single dictionary?.....Incorrectly",
+        " How can a girl go 25 days without sleep?.....She sleeps and night!",
+        "How do you make the number one disappear?.....Add the letter G and it’s 'gone'!",
+        " What will you actually find at the end of every rainbow?.....The letter 'w'",
+        "What can be caught but never thrown?.....A cold!",
+        "What has a thumb and four fingers but is not actually alive?.....Your Gloves!",
+        " What 5-letter word becomes shorter when you add two letters to it?.....Short",
+        "Why can't a bike stand on it's own?.....It is two-tired."
+      ],
+      "context": ["riddles"]
+    },
+    {
+      "tag": "age",
+      "patterns": ["how old are you", "when were you made", "what is your age"],
+      "responses": ["I was made in 2020, if that's what you are asking!"]
+    },
+
+    {
+      "tag": "start",
+      "patterns": [
+        "start control",
+        "start manual",
+        "start camera mouse",
+        "start air "
+      ],
+      "responses": ["Starting air control", "functionalities.openControl()"]
+    },
+    {
+      "tag": "stop",
+      "patterns": ["stop", "stop manual ", "stop camera", "stop air"],
+      "responses": ["Stoping air control", "functionalities.stopControl()"]
+    },
+    {
+      "tag": "email",
+      "patterns": ["email", "emails", "open my emails", "what are my emails"],
+      "responses": [
+        "Opening Gmail",
+        "webbrowser.open('https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox')"
+      ]
+    },
+    {
+      "tag": "youtube",
+      "patterns": ["youtube", "open youtube", "i wanna see a video"],
+      "responses": [
+        "Opening Youtube",
+        "webbrowser.open('https://www.youtube.com/')"
+      ]
+    },
+    {
+      "tag": "notion",
+      "patterns": ["open notion", "notion", "notes", "i want to see my notes"],
+      "responses": [
+        "Opening notion",
+        "webbrowser.open('https://www.notion.so/')"
+      ]
+    },
+    {
+      "tag": "alttab",
+      "patterns": ["alt-tab", "alt", "alter tab"],
+      "responses": ["", "pyautogui.hotkey('alt', 'tab')"]
+    },
+    {
+      "tag": "controltab",
+      "patterns": ["control-tab", "change tab", "change"],
+      "responses": ["", "pyautogui.hotkey('ctrl', 'tab')"]
+    },
+    {
+      "tag": "zoomin",
+      "patterns": ["zoom in", "zoom", "focus"],
+      "responses": ["Zooming in", "pyautogui.hotkey('ctrl', '+')"]
+    },
+    {
+      "tag": "zoomout",
+      "patterns": ["zoom out", "out"],
+      "responses": ["Zooming out", "pyautogui.hotkey('ctrl', '-')"]
+    },
+    {
+      "tag": "createtab",
+      "patterns": ["create tab", "create chrome tab", "new tab"],
+      "responses": ["", "pyautogui.hotkey('ctrl', 't')"]
+    },
+    {
+      "tag": "closetab",
+      "patterns": ["close tab", "close chrome tab"],
+      "responses": ["", "pyautogui.hotkey('ctrl', 'w')"]
+    },
+    {
+      "tag": "closewindow",
+      "patterns": ["close window", "stop window", "close app", "stop app"],
+      "responses": ["", "pyautogui.hotkey('ctrl', 'w')"]
+    },
+    {
+      "tag": "scrolldown",
+      "patterns": ["scroll down", "down", "move down"],
+      "responses": ["", "pyautogui.press('pagedown')"]
+    },
+    {
+      "tag": "scrollup",
+      "patterns": ["scroll up", "up", "move up"],
+      "responses": ["", "pyautogui.press('pageup')"]
+    },
+    {
+      "tag": "type",
+      "patterns": ["write", "type", "typing"],
+      "responses": ["", "functionalities.Typing(message)"]
+    },
+    {
+      "tag": "pressenter",
+      "patterns": ["press enter", "enter"],
+      "responses": ["", " pyautogui.press('enter')"]
+    },
+    {
+      "tag": "erase",
+      "patterns": ["clear", "erase", "erase word", "backspace", "undo"],
+      "responses": ["", "functionalities.Backspace(message)"]
+    },
+    {
+      "tag": "todo",
+      "patterns": [
+        "what are my todos",
+        "to do list",
+        "todo list",
+        "what do i have to do today"
+      ],
+      "responses": ["Here is your to do list...", "functionalities.getTodos()"]
+    }
+  ]
 }

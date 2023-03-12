@@ -10,7 +10,7 @@ keras=tf.keras
 
 lemmatizer=WordNetLemmatizer()
 
-intents=json.loads(open('intents2.json').read())
+intents=json.loads(open('intents.json').read())
 
 words=[]
 classes=[]
