@@ -82,7 +82,7 @@ CORS(app)
 
 @app.route('/',methods=['GET'])
 def test():
-    return None
+    return "None"
 
 @app.route('/',methods=['POST'])
 def main_page():

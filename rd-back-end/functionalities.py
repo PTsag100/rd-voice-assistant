@@ -9,7 +9,7 @@ import json
 sub=None
 
 def weather():
-    api_key="YOUR API KEY"
+    api_key="b4ba84363955b7961a2e27895200bcd3"
     myloc = geocoder.ip('me')
     myloc=myloc.json
     response=requests.get("http://api.openweathermap.org/geo/1.0/direct?q={}&appid={}".format(myloc['city'],api_key))
